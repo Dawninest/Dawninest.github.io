@@ -90,7 +90,7 @@
     </div>
     <div class="menu-navItem-cont">
         <div class="menu-navTag-cont">
-  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactNative/">ReactNative</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日语/">日语</a><span class="tag-list-count">1</span></li></ul>
+  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactNative/">ReactNative</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日语/">日语</a><span class="tag-list-count">1</span></li></ul>
 </div>
     </div>
   </div>
@@ -157,6 +157,158 @@
 <li>便利初始化的对象默认已经加入当前池中     </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+</article>
+  
+  <article class="post" id="post">
+  <header class="post-head">
+    <h1 class="post-title">
+      <a class="title" href="/2016/02/21/01/">
+        Objective-C | 集合类
+      </a>
+    </h1>
+  </header>
+  <div class="post-datetag">
+    <div class="post-date">
+      <time class="post-time" title="2016-02-21 00:00:00" datetime="2016-02-20T16:00:00.000Z" itemprop="datePublished">
+  2016-02-21
+</time>
+    </div>
+    <div class="post-tag">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </div>
+  </div>
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="集合类"><a href="#集合类" class="headerlink" title="集合类"></a>集合类</h2><h3 id="集合类特点："><a href="#集合类特点：" class="headerlink" title="集合类特点："></a>集合类特点：</h3><ul>
+<li><p>所有的集合都是对象    </p>
+</li>
+<li><p>集合中所有的元素都是对象而且只能是对象    </p>
+</li>
+<li><p>简单数据类型用NSNumber封装成对象，复杂数据类型用NSValue封装    </p>
+</li>
+<li><p>集合中不能存放nil对象，nil是作为集合结束的标志符    </p>
+</li>
+<li><p>OC集合没有多维的概念，不会出现根本意义上的二维数组    </p>
+</li>
+<li><p>集合的所有运算依赖于方法 </p>
+</li>
+</ul>
+<h3 id="数组NSArray"><a href="#数组NSArray" class="headerlink" title="数组NSArray"></a>数组<strong>NSArray</strong></h3><p>c语言数据类型(int,float,double,BOOL)要封装成NSNumber类型后，才能存在集合中 </p>
+<h4 id="NSArray-不可变数组"><a href="#NSArray-不可变数组" class="headerlink" title="NSArray  不可变数组"></a>NSArray  不可变数组</h4><ol>
+<li>初始化    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[NSArray alloc]initWithObject:@“1”,@“2”,@“3”,nil]	</span><br><span class="line">[[NSArray alloc]initWithArray:array1];	</span><br><span class="line">[NSArray arrayWithObject:@“1”,@“2”,@“3”,nil]	</span><br><span class="line">[NSArray arrayWithArray:array1];	</span><br><span class="line">简化操作：NSArray = @[@“1”,@“2”,@“3”];	</span><br><span class="line">标记static的数组，不能使用简写赋值</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取数组元素个数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[array count];		</span><br><span class="line">array.count</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>添加元素</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[array arrayByAddingObject:@“4”];	</span><br><span class="line">[array arrayByAddingObjectFromArray:array1];</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>查找元素    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSInteger index = [array indexObject:@“3”];	</span><br><span class="line">index == NSNotFound;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>获取元素    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//存入的是什么类型，取出就用什么类型接受	</span><br><span class="line">array[0];		</span><br><span class="line">[array objectAtIndex:0];	</span><br><span class="line">//获取第一个元素      </span><br><span class="line">[array firstObject];	</span><br><span class="line">//获取最后一个元素  </span><br><span class="line">[array lastObject];	</span><br><span class="line">//获取部分元素 </span><br><span class="line">NSArray *getArray = [array subarrayWithRange”NSMakeRange(0,2)];</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><p>排序    </p>
+</li>
+<li><p>快速枚举    </p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(id obj in newArray)&#123; 	</span><br><span class="line">	NSLog(@“obj = %@”,obj);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="NSMutableArray-可变数组"><a href="#NSMutableArray-可变数组" class="headerlink" title="NSMutableArray  可变数组"></a>NSMutableArray  可变数组</h4><ol>
+<li>初始化    </li>
+</ol>
+<p>基本同上，不能直接使用简化方法，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSMutableArray *array = [@[@“1”,@“2”]mutableCopy];</span><br><span class="line">额外一种， [NSMutableArray arrayWithCapacticy:20];	分配容量</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>增    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableArray addObject:@“0”];</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableArray removeObject:@“2”];</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>查    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableArray indexOfObject:@“0”];	查出在数组中的位置</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>改    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableArray replaceObjectAtIndex:2 withObject:@“0”];	改数组中对应位置的元素</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>排序 </li>
+</ol>
+<h4 id="字典NSDictionay"><a href="#字典NSDictionay" class="headerlink" title="字典NSDictionay"></a>字典<strong>NSDictionay</strong></h4><p>关键字及其定义的集合，字典也被称为 散列表或关联数组 </p>
+<ul>
+<li>NSDictionay  | value - key     </li>
+</ul>
+<p>1.初始化    </p>
+<p>一般初始化：NSDictionary *dictionary = [[NSDictionary alloc]initWithObjectsAndKeys:@“one”,@“1”,@“two”,@“2”,nil];    </p>
+<p>便利初始化:   NSDictionary *dictionary = [NSDictionary dictionaryWithObjectAndKeys:@“one”,@“1”,@“two”,@“2”,nil];    </p>
+<p>快速初始化:   NSDictionary *dictionary = @[@“1”:@“one”,@“2”:@“two”];    </p>
+<p>2.查询    [dictionary objectForKey:@“2”];    dictionary[@“2”];    </p>
+<p>3.取出所有key    NSArray *key = [dictionary allKeys];    </p>
+<p>4.取出所有对象    NSArray *objects = [dictionary allValue];  </p>
+<ul>
+<li>NSMutableDictionay     </li>
+</ul>
+<ol>
+<li><p>初始化-基本同上    </p>
+</li>
+<li><p>增    </p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableDictionary setObject:@“six” forKey:@“6”];</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableDictionary removeObjectForKey:@“6”];</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>查    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableDictionary objectForKey:@“4”];</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>改(根据Key值覆盖之前的数据)    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableDictionary setObject:@“sunny” forKey:@“4”];</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>遍历    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(id key in mutableDictionary) &#123;	</span><br><span class="line">	NSLog(@“%@”,[mutableDictionary objectForKey:Key])	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>集<strong>NSSet</strong>    </li>
+</ul>
+<p>里面的对象不能存放重复的对象，主要用于去除重复数，可用来清除其它集合中的重复对象    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">去除重复数	</span><br><span class="line">NSArray *array = @[@“1”,@“1”,@“2”,@“3”,@“3”,@“4”];	</span><br><span class="line">NSSet *set = [NSSet setWithArray:array];	</span><br><span class="line">NSArray *arraySet = [set allObject];	</span><br><span class="line">得到的 arraySet 就是去除重复元素之后的数组</span><br></pre></td></tr></table></figure>
 
 
     
